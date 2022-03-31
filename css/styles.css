@@ -30,28 +30,29 @@ body {
     font-size: 1.75rem;
 }
 
-.advice-title {
-    margin-block: 1.25em;
-    color: var(--clr-primary-neon);
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: .15rem;
-}
-
 .container {
     grid-area: main;
 }
 
 .card {
     position: relative;
+    min-width: 340px;
     padding-top: 1rem;
     padding-right: 1rem;
     padding-bottom: 4rem;
     padding-left: 1rem;
     border-radius: 1rem;
-    box-shadow: 0 0 1rem hsl(var(--clr-neutral-600) / .15);
+    box-shadow: 0 0 1rem hsl(var(--clr-neutral-400) / .15);
     background-color: var(--clr-neutral-600);
     text-align: center;
+}
+
+.advice-title {
+    margin-block: 1.25em;
+    color: var(--clr-primary-neon);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: .15rem;
 }
 
 .card p {
