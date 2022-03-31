@@ -1,4 +1,12 @@
-::root {
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
     --clr-primary-light: hsl(193, 38%, 86%);
     --clr-primary-neon: hsl(150, 100%, 66%);
     --clr-neutral-400: hsl(217, 19%, 38%);
@@ -11,6 +19,102 @@ html {
 }
 
 body {
+    display: grid;
+    grid-template-columns: minmax(1rem, 1fr) minmax(340px, 1fr) minmax(1rem, 1fr);
+    grid-template-areas: '. main .';
+    place-items: center;
+    min-height: 100vh;
+    background-color: var(--clr-neutral-900);
+    color: var(--clr-primary-light);
     font-family: Manrope;
     font-size: 1.75rem;
+}
+
+.advice-title {
+    margin-block: 1.25em;
+    color: var(--clr-primary-neon);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: .15rem;
+}
+
+.container {
+    grid-area: main;
+}
+
+.card {
+    position: relative;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 4rem;
+    padding-left: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem hsl(var(--clr-neutral-600) / .15);
+    background-color: var(--clr-neutral-600);
+    text-align: center;
+}
+
+.card p {
+    position: relative;
+    padding-bottom: 3rem;
+}
+
+.card p::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2rem;
+    inset: auto 0 0 0;
+    background-image: url(../images/pattern-divider-mobile.svg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.card button {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 50%;
+    padding: 1.25rem;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--clr-primary-neon);
+    transform: translate(-50%, 50%);
+    cursor: pointer;
+}
+
+.card button::after {
+    position: absolute;
+    inset: 0;
+    display: block;
+    content: '';
+    opacity: .1;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--clr-primary-neon);
+    filter: blur(5px);
+    transform: scale(1.5);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 250ms ease-in-out;
+}
+
+.card button:hover::after,
+.card button:focus::after,
+.card button:active::after {
+    opacity: .15;
+}
+
+@media only screen and (min-width: 375px) {
+    .card p::after {
+        background-image: url(../images/pattern-divider-desktop.svg);
+    }
+}
+
+.attribution {
+    position: fixed;
+    inset: auto 0 0 0;
+    padding: .5rem;
+    text-align: center;
 }
