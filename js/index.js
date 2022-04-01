@@ -4,7 +4,7 @@ const adviceText = document.querySelector('[data-advice-text')
 
 const fetchAdvice = async() => {
     try {
-        const res = await fetch('https://api.adviceslip.com/advice')
+        const res = await fetch('https://api.adviceslip.com/advice', { cache: 'no-cache' })
         const data = await res.json()
         return data.slip
     } catch (err) {
